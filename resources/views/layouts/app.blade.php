@@ -13,10 +13,14 @@
         @include('commons.navbar')
 
         <div class="container">
-            {{-- エラーメッセージ --}}
-            @include('commons.error_messages')
+          
+       
 
             @yield('content')
+            <div class="DivLink">
+                
+                <a class ="Link" href="{{ action('HomeController@index') }}"><div class="name">出品</div></a>
+            </div>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -25,8 +29,8 @@
         <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
     </body>
 </html>
-エラーメッセージ
-resources/views/commons/error_messages.blade.php
+
+
 
 @if (count($errors) > 0)
     <ul class="alert alert-danger" role="alert">
@@ -35,3 +39,26 @@ resources/views/commons/error_messages.blade.php
         @endforeach
     </ul>
 @endif
+<style>
+
+.DivLink a{
+    text-decoration: none;
+}
+.Link{
+    
+    width:160px;
+    height:160px;
+    background-color: red;
+    border-radius: 50%;
+    float:right;
+    
+   
+}
+.name{
+    margin-left:34%;
+    margin-top:30%;
+    color:white;
+    font-size:150%;
+}
+
+</style>

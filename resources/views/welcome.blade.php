@@ -1,15 +1,46 @@
 @extends('layouts.app')
 
 @section('content')
-    @if (Auth::check())
-        {{ Auth::user()->name }}
-    @else
-        <div class="center jumbotron">
-            <div class="text-center">
-                <h1>Welcome to the Microposts</h1>
-                {{-- ユーザ登録ページへのリンク --}}
-                {!! link_to_route('signup.get', 'Sign up now!', [], ['class' => 'btn btn-lg btn-primary']) !!}
+  
+        <div class="container">
+            <div class="title text-center">
+                <h1>人気のカテゴリー</h1> 
+            </div>
+            <div class="popularity">
+                <ul>
+                    <li class="popularity-ledis">レディース</li>
+                    <li class="popularity-mens">メンズ</li>
+                    <li class="popularity-kaden">家電・スマホ</li>
+                </ul>
             </div>
         </div>
-    @endif
+  
+
+<style>
+.title{
+    margin-top:10%;
+}
+.popularity{
+    margin-top:2%;
+}
+.popularity ul{
+    display:flex;
+    list-style:none;
+    margin-left:25%;
+}
+.popularity li{
+    margin-left:5%;
+    border-radius: 15px;
+    padding:1%;
+}
+.popularity-mens{
+    background-color: rgb(239, 239, 239);
+}
+.popularity-ledis{
+    background-color: rgb(239, 239, 239);
+}
+.popularity-kaden{
+    background-color: rgb(239, 239, 239);
+}
+</style>
 @endsection
