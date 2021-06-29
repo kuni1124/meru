@@ -9,4 +9,9 @@ class Product_state extends Model
     protected $fillable = [
         'text', 
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

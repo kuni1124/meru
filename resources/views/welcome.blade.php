@@ -15,7 +15,7 @@
             </div>
         </div>
         {!! link_to_route('regist.index', '登録') !!}
-
+ @endsection
 <style>
 .title{
     margin-top:10%;
@@ -43,4 +43,3 @@
     background-color: rgb(239, 239, 239);
 }
 </style>
-@endsection

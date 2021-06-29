@@ -13,8 +13,15 @@ use App\Delivery;
 class ProductsController extends Controller
 {
     public function index()
-    {    
+    {   $user = Auth::user();
+        $products = Product::all();
         
+        
+        // $tankas = Tanka::with('gyousha','kategory','hinnmoku')->where('display', true)->where('kategory_id', $kategory_id)->orderBy('hinnmoku_id')->orderBy('id')->get();
+        return view('products.index', [
+            'products' => $products,
+           
+          ]);
     }
 
     /**

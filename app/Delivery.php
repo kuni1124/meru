@@ -10,4 +10,9 @@ class Delivery extends Model
     protected $fillable = [
         'text', 
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

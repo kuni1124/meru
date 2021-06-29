@@ -8,7 +8,7 @@
             <ul>
                 <li>出品する</li>
                 <li>下書き一覧</li>
-                <li>出品した商品-出品中</li>
+                <li>{!! link_to_route('product.index', '出品した商品-出品中',[],['class' => 'rink']) !!}</li>
                 <li>出品した商品-取引中</li>
                 <li>出品した商品-売却済み</li>
                 <li>購入した商品-取引中</li>
@@ -52,9 +52,13 @@
     border-radius: 15px;
     margin-top:10%;
     width:130%;
+   
 }
 .mynews{
     margin-top:2%;
     margin-left:25%;
+}
+.rink{
+    color:black;
 }
 </style>

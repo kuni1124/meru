@@ -24,6 +24,8 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 Route::group(['middleware' => ['auth']], function () {
     // 中略
     Route::get('home.index', 'HomesController@index')->name('home.index');
+
+    Route::get('product.index', 'ProductsController@index')->name('product.index');
     Route::get('product.create', 'ProductsController@create')->name('product.create');
     Route::post('product.store', 'ProductsController@store')->name('product.store');
 });
