@@ -1,20 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-class HomeController extends Controller
+use App\Product_state;
+class Product_statesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
-    {
-        return view('home.index', [
-           
+    {    
+        $product_states = Product_state::all();
+
+
+        return view('product_states.index', [
+           'product_states' => $product_states
          ]);
     }
 
@@ -25,7 +24,12 @@ class HomeController extends Controller
      */
     public function create()
     {
-        //
+        $product_state = new Product_state;
+
+
+        return view('product_states.create', [
+           'product_state' => $product_state
+         ]);
     }
 
     /**
@@ -36,7 +40,11 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product_state = new Product_state;
+
+        $product_state->text = $request->text;
+        $product_state->save();
+        return redirect('/product_states.index')->with('flash_message', 'STORE!');
     }
 
     /**
@@ -81,6 +89,9 @@ class HomeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product_state = Product_state::findOrFail($id);
+        
+        $product_state->delete();
+        return redirect('/product_states.index')->with('flash_message', 'delete!');
     }
 }

@@ -23,7 +23,9 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
 Route::group(['middleware' => ['auth']], function () {
     // 中略
-    Route::get('index', 'HomeController@index')->name('index');
+    Route::get('home.index', 'HomesController@index')->name('home.index');
+    Route::get('product.create', 'ProductsController@create')->name('product.create');
+    Route::post('product.store', 'ProductsController@store')->name('product.store');
 });
 
 Route::get('regist.index', 'RegistrationController@index')->name('regist.index');
@@ -47,4 +49,7 @@ Route::post('deliverys.store', 'DeliverysController@store')->name('deliverys.sto
 Route::delete('deliverys.delete/{id}', 'DeliverysController@destroy')->name('deliverys.delete');
 
 //商品状態
-Route::get('product_states.index', 'Controller@index')->name('product_states.index');
+Route::get('product_states.index', 'Product_statesController@index')->name('product_states.index');
+Route::get('product_states.create', 'Product_statesController@create')->name('product_states.create');
+Route::post('product_states.store', 'Product_statesController@store')->name('product_states.store');
+Route::delete('product_states.delete/{id}', 'Product_statesController@destroy')->name('product_states.delete');

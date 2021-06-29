@@ -1,18 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
-use App\Kategory;
-class KategorysController extends Controller
+use Illuminate\Support\Facades\Auth;
+class HomesController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
-    {    $kategorys = Kategory::all();
-
-
-        return view('kategorys.index', [
-           'kategorys' => $kategorys
+    {
+        return view('home.index', [
+           
          ]);
     }
 
@@ -23,12 +25,7 @@ class KategorysController extends Controller
      */
     public function create()
     {
-        $kategory = new Kategory;
-
-
-        return view('kategorys.create', [
-           'categorys' => $kategory
-         ]);
+        //
     }
 
     /**
@@ -39,11 +36,7 @@ class KategorysController extends Controller
      */
     public function store(Request $request)
     {
-        $kategory = new Kategory;
-
-        $kategory->name = $request->name;
-        $kategory->save();
-        return redirect('/kategorys.index')->with('flash_message', 'STORE!');
+        //
     }
 
     /**
@@ -88,9 +81,6 @@ class KategorysController extends Controller
      */
     public function destroy($id)
     {
-        $kategory = Kategory::findOrFail($id);
-        
-        $kategory->delete();
-        return redirect('/kategorys.index')->with('flash_message', 'delete!');
+        //
     }
 }

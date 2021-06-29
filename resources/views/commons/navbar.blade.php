@@ -23,7 +23,7 @@
                             {{-- ログアウトへのリンク --}}
                             <li>{!! link_to_route('logout.get', '♡いいね！一覧') !!}</li>
                             <li>{!! link_to_route('logout.get', 'Logout') !!}</li>
-                            <li>{!! link_to_route('index','マイページ') !!}</li>
+                            <li>{!! link_to_route('home.index','マイページ') !!}</li>
                         </ul>
                     </div> 
                 @else

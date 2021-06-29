@@ -9,16 +9,16 @@
 
     <body>
     <div class="text-center">
-        <h1>都道府県</h1>
+        <h1>状態</h1>
     </div>
 
     <div class="row">
         <div class="col-sm-6 offset-sm-3">
 
-            {!! Form::open(['route' => 'prefectures.store']) !!}
+            {!! Form::open(['route' => 'product_states.store']) !!}
                 <div class="form-group">
-                    {!! Form::label('name', 'Name') !!}
-                    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                    {!! Form::label('text', 'Text') !!}
+                    {!! Form::text('text', null, ['class' => 'form-control']) !!}
                 </div>
 
                 {!! Form::submit('Sign up', ['class' => 'btn btn-primary btn-block']) !!}

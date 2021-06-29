@@ -19,7 +19,7 @@
             @yield('content')
             <div class="DivLink">
                 
-                <a class ="Link" href="{{ action('HomeController@index') }}"><div class="name">出品</div></a>
+                <a class ="Link" href="{{ action('ProductsController@create') }}"><div class="name">出品</div></a>
             </div>
         </div>
 
