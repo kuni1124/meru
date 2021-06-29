@@ -14,7 +14,7 @@
                 </ul>
             </div>
         </div>
-  
+        {!! link_to_route('regist.index', '登録') !!}
 
 <style>
 .title{
