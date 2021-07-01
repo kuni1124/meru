@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>Microposts</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    </head>
+
+    <body>
+    <div class="text">
+        <h5>umekikunihiko</h5>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+             <div class="product-titile">
+                  <h5>商品内容の確認</h5>
+             </div>
+            {!! Form::model($buy, ['route' => ['buys.store', $product->id], 'method' => 'post']) !!}
+
+            <div class="form-group-image">
+                <div class="image">
+                    <label>画像選択</label>
+                </div>
+                <div class="name">
+                    <h4>{{$product->name}}</h4><br/>
+                    <h4>¥{{$product->price}}</h4>
+                </div>
+            </div>
+            <div class="totalprice">
+                <h4 class="maney">お支払い金額</h4>
+                <h4 class="total">¥{{$product->price*1.10}}</h4>
+            </div>    
+            <div class="adress">
+                <h4 class="maney">配送先</h4>
+                @if($delivery_destination->id)
+                    {!! link_to_route('delivery_destination.edit', '変更する',$delivery_destination->id,['class' => 'rink']) !!}
+                @else
+                    {!! link_to_route('delivery_destination.create', '変更する',$delivery_destination->id,['class' => 'rink']) !!}
+                @endif    
+                <h4 class="total">¥{{$product->price*1.10}}</h4>
+            </div>    
+        
+               
+
+                
+
+                {!! Form::submit('商品を購入する', ['class' => 'btn btn-primary']) !!}
+
+            {!! Form::close() !!}
+            {!! link_to_route('home.index', '戻る',[],['class' => 'btn btn-primary']) !!}
+        </div>
+    </div>
+    
+
+   
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
+    </body>
+</html>
+<style>
+
+.row{
+    
+    padding-top:2%;
+    padding-bottom:10%;
+    background-color:white;
+    width: 50%;
+    margin-left:auto;
+    margin-right: auto;
+    
+    
+}
+.text{
+    text-align:center;
+    padding-top:5%;
+    padding-bottom:5%;
+}
+.product-titile{
+    margin-bottom:15%;
+    margin-left:80%;
+    width:100%;
+}
+body{
+    background-color: rgb(239, 239, 239);
+}    
+.btn{
+    margin-top:8%;
+    width:100%;
+} 
+.form-group-image{
+    display:flex;
+    width:300%;
+    border-bottom:1px solid rgb(239, 239, 239);
+    margin-left:0px;
+   
+} 
+.name h4{
+    width:250%;
+} 
+.image{
+    margin-left:10%;
+}
+.totalprice{
+    margin-top:20%;
+    padding-bottom:30%;
+    display:flex;
+    width:300%;
+    border-bottom:1px solid rgb(239, 239, 239);
+}
+.maney{
+    margin-left:15%;
+    
+}
+.total{
+    margin-left:15%;
+}
+.btn{
+    margin-left:50%;
+}
+</style>

@@ -30,6 +30,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/product.edit/{id}', 'ProductsController@edit')->name('product.edit');
     Route::delete('/product.delete/{id}', 'ProductsController@destroy')->name('product.delete');
     Route::put('/product.update/{id}', 'ProductsController@update')->name('product.update');
+
+    Route::get('buys.create/{id}', 'BuysController@create')->name('buys.create');
+    Route::post('buys.store/{id}', 'BuysController@store')->name('buys.store');
+    Route::get('buys.show/{id}', 'BuysController@show')->name('buys.show');
 });
 
 Route::get('regist.index', 'RegistrationController@index')->name('regist.index');

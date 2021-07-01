@@ -22,7 +22,7 @@
              </div>
                 <div class="line_up"> 
                     <ul>
-                     {!! link_to_route('product.show', $product->id,$product->id,['product' => $product->id]) !!}
+                     {!! link_to_route('buys.show', $product->id,$product->id,['product' => $product->id]) !!}
                      <li class="whitename">{{$product->name}}</li>
                      <li class="whiteprice"><div class="margin">¥{{$product->price}}<div></li>    
                     </ul>
@@ -38,7 +38,7 @@
               </div>
                 <div class="line_up"> 
                     <ul>
-                     {!! link_to_route('product.show', $product->id,$product->id,['product' => $product->id]) !!}
+                     {!! link_to_route('buys.show', $product->id,$product->id,['product' => $product->id]) !!}
                      <li class="whitename">{{$product->name}}</li>
                      <li class="whiteprice"><div class="margin">¥{{$product->price}}<div></li>    
                     </ul>
@@ -54,7 +54,7 @@
              </div>
                 <div class="line_up"> 
                     <ul>
-                     {!! link_to_route('product.show', $product->id,$product->id,['product' => $product->id]) !!}
+                     {!! link_to_route('buys.show', $product->id,$product->id,['product' => $product->id]) !!}
                      <li class="whitename">{{$product->name}}</li>
                      <li class="whiteprice"><div class="margin">¥{{$product->price}}<div></li>    
                     </ul>

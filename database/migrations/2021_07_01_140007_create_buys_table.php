@@ -16,6 +16,7 @@ class CreateBuysTable extends Migration
         Schema::create('buys', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('date');
+            $table->text('text');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
             $table->timestamps();
