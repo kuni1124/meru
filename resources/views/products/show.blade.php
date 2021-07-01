@@ -44,7 +44,7 @@
             <h2>¥{{$product->price}}</h2>
       </div>
       <div class="text">
-            <h5>{{$product->text}}</h5>
+            <h4>{{$product->text}}</h4>
       </div>
       <div class="flex">
           <div class="text-edit">
@@ -106,6 +106,7 @@ margin-top:5%;
 }
 .text{
     text-align:center;
+    margin-top:5%;
 }
 .flex{
     display:flex;

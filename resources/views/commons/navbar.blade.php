@@ -5,7 +5,7 @@
         <div class="top-nav" >
             <ul>
             {{-- トップページへのリンク --}}
-                <li><a class="title" href="/">umekikunihiko</a></li>
+                <li><a class="title" href="/">トップページへ</a></li>
                 <li><input type="search" name="keyword" placeholder="何かお探しですか？" class="sc-GMQeP cuephK" value=""></li>
                 
             </ul>
