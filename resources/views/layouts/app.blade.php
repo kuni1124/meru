@@ -40,7 +40,9 @@
     </ul>
 @endif
 <style>
-
+body{
+    background-color: rgb(239, 239, 239);
+}
 .DivLink a{
     text-decoration: none;
 }

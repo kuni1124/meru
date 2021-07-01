@@ -11,12 +11,14 @@
     <div class="text">
         <h5>umekikunihiko</h5>
     </div>
-
+    <div class="pruduct-title">
+        <h4>商品編集</h4>
+    </div>
     <div class="row">
-        <div class="col-sm-6 offset-sm-3">
+        <div class="col-6">
+            {!! Form::model($product, ['route' => ['product.update', $product->id], 'method' => 'put']) !!}
 
-            {!! Form::open(['route' => 'product.store']) !!}
-                <div class="form-group">
+            <div class="form-group">
                     <label>画像選択<input type="file" name="img" accept=".png,.jpg,.jpeg,image/png,image/jpg"></label>
                 </div>
                 <div class="form-group">
@@ -63,13 +65,22 @@
                     {!! Form::label('price', '値段') !!}</br>
                     {!! Form::text('price',null, ['class' => 'form-control']) !!}
                 </div>
-                {!! Form::submit('出品する', ['class' => 'btn btn-primary btn-block']) !!}
+
+                {!! Form::submit('商品を編集する', ['class' => 'btn btn-primary']) !!}
+
             {!! Form::close() !!}
             {!! link_to_route('home.index', '戻る',[],['class' => 'btn btn-primary']) !!}
         </div>
-        
     </div>
+
+
+
+
+
    
+        
+    
+    
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
@@ -86,8 +97,11 @@
     height:50px;
     
 }
+.pruduct-title{
+    text-align:center;
+}
 .row{
-    
+    justify-content:center;
     padding-top:5%;
     padding-bottom:10%;
     background-color:white;

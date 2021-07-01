@@ -28,6 +28,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('product.index', 'ProductsController@index')->name('product.index');
     Route::get('product.create', 'ProductsController@create')->name('product.create');
     Route::post('product.store', 'ProductsController@store')->name('product.store');
+    Route::get('/product.show/{id}', 'ProductsController@show')->name('product.show');
+    Route::get('/product.edit/{id}', 'ProductsController@edit')->name('product.edit');
+    Route::delete('/product.delete/{id}', 'ProductsController@destroy')->name('product.delete');
+    Route::put('/product.update/{id}', 'ProductsController@update')->name('product.update');
 });
 
 Route::get('regist.index', 'RegistrationController@index')->name('regist.index');

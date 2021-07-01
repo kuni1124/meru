@@ -40,16 +40,21 @@
    
 </header>
 <style>
+
 header{
+    background-color:white;
     padding-left:13%;
 }
+
 .top-nav li{
     margin-top:3%;
     margin-left:6%;
+    
 }
 .top-nav ul{
     list-style:none;
     display:flex;
+    
     
     
 }
@@ -60,6 +65,7 @@ header{
 .navbar-brand{
     color:black;
 }
+
 .top-login ul{
     list-style:none;
     display:flex;
