@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Delivery_destination;
 class HomesController extends Controller
 {
     /**
@@ -13,8 +14,11 @@ class HomesController extends Controller
      */
     public function index()
     {
+
+        $user = Auth::user();
+        $delivery_destination = Delivery_destination::find($user)->first();
         return view('home.index', [
-           
+            'delivery_destination' => $delivery_destination
          ]);
     }
 

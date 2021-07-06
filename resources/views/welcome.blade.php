@@ -15,52 +15,80 @@
                 </ul>
             </div>
           </div>
-           @foreach($products as $product)
-             @if($product->kategory->name == $womens)
+         
+           
+           
+             
              <div class="womens-title">
                 <h3>レディース新着アイテム</h3>
              </div>
-                <div class="line_up"> 
+             <table>
+　　　　　　　　　<tr>
+             @foreach($products as $product)
+            
+             @if($product->kategory->name == $womens)
+             <td>
+                <div class="line-up"> 
+                <a href="{{ url('buys.index', $product->id) }}">
                     <ul>
-                     {!! link_to_route('buys.show', $product->id,$product->id,['product' => $product->id]) !!}
+                    <li class="image"><img src="{{asset('storage/images/'.$product->image)}}" class="margin"></li>   
                      <li class="whitename">{{$product->name}}</li>
                      <li class="whiteprice"><div class="margin">¥{{$product->price}}<div></li>    
                     </ul>
+                </a>
                </div>
+             </td>
+             
+               @endif
                
-              @endif
-            @endforeach
+               @endforeach 
+               <tr> 
+             </table>
+           
 
-            @foreach($products as $product)
-             @if($product->kategory->name == $mens)
+           
               <div class="mens-title">
                 <h3>メンズ新着アイテム</h3>
               </div>
-                <div class="line_up"> 
+              <table>
+　　　　　　　　　<tr>
+                @foreach($products as $product)     
+                 @if($product->kategory->name == $mens)
+                <td>
+                <div class="line-up"> 
                     <ul>
                      {!! link_to_route('buys.show', $product->id,$product->id,['product' => $product->id]) !!}
                      <li class="whitename">{{$product->name}}</li>
                      <li class="whiteprice"><div class="margin">¥{{$product->price}}<div></li>    
                     </ul>
                 </div>
-               
-              @endif
-            @endforeach
+                </td>
+                @endif
+               @endforeach
+               <tr> 
+             </table>
 
-            @foreach($products as $product)
-             @if($product->kategory->name == $toys)
+           
              <div class="toys-title">
                  <h3>おもちゃ新着アイテム</h3>
              </div>
-                <div class="line_up"> 
+             <table>
+　　　　　　　　　<tr>
+                @foreach($products as $product) 
+                 @if($product->kategory->name == $toys)
+                 <td>
+                 <div class="line-up"> 
                     <ul>
                      {!! link_to_route('buys.show', $product->id,$product->id,['product' => $product->id]) !!}
                      <li class="whitename">{{$product->name}}</li>
                      <li class="whiteprice"><div class="margin">¥{{$product->price}}<div></li>    
                     </ul>
-               </div>
+                 </div>
+                 </td>
               @endif
             @endforeach
+            <tr> 
+            </table>
          
         {!! link_to_route('regist.index', '登録') !!}
  @endsection
@@ -109,17 +137,19 @@
 .popularity-kaden{
     background-color: rgb(239, 239, 239);
 }
-.line_up{
-    display:flex;
-    justify-content: space-around;
-}
-.line_up ul{
+
+
+.line-up ul{
+    
     list-style:none;
     box-shadow: 2px 2px 4px gray;
     padding:0px;
     margin-top:5%;
+    margin-left:40px;
+    
 }
-.line_up li{
+.line-up li{
+   
     width:188px;
 }
 .whitename{
@@ -147,5 +177,13 @@
 .toys-title h3{
     font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
     margin-top:5%;
+}
+.teble{
+    margin-left:10%;
+}
+.image img{
+    width:100%;
+    margin-left:0px;
+    height:120px;
 }
 </style>

@@ -23,6 +23,12 @@ Route::group(['middleware' => ['auth']], function () {
     // 中略
     Route::get('home.index', 'HomesController@index')->name('home.index');
 
+        Route::get('users.index', 'UserFollowController@index')->name('users.index');
+        Route::post('follow/{id}', 'UserFollowController@store')->name('user.follow');
+        Route::delete('unfollow/{id}', 'UserFollowController@destroy')->name('user.unfollow');
+        Route::get('followings', 'UsersController@followings')->name('users.followings');
+        Route::get('followers', 'UsersController@followers')->name('users.followers');
+    
     Route::get('product.index', 'ProductsController@index')->name('product.index');
     Route::get('product.create', 'ProductsController@create')->name('product.create');
     Route::post('product.store', 'ProductsController@store')->name('product.store');
@@ -30,10 +36,22 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/product.edit/{id}', 'ProductsController@edit')->name('product.edit');
     Route::delete('/product.delete/{id}', 'ProductsController@destroy')->name('product.delete');
     Route::put('/product.update/{id}', 'ProductsController@update')->name('product.update');
+    Route::get('transaction.index', 'ProductsController@transaction')->name('transaction.index');
+    Route::get('cancel/{id}', 'ProductsController@cancel')->name('cancel');
 
+    Route::get('buys.index/{id}', 'BuysController@index')->name('buys.index');
     Route::get('buys.create/{id}', 'BuysController@create')->name('buys.create');
     Route::post('buys.store/{id}', 'BuysController@store')->name('buys.store');
     Route::get('buys.show/{id}', 'BuysController@show')->name('buys.show');
+    
+    Route::get('buymotions.index', 'BuymotionsController@index')->name('buymotions.index');
+    Route::get('buymotions.destroy/{id}', 'BuymotionsController@destroy')->name('buymotions.destroy');
+    
+
+    Route::get('delivery_destination.create', 'Delivery_destinationsController@create')->name('delivery_destination.create');
+    Route::post('delivery_destination.store', 'Delivery_destinationsController@store')->name('delivery_destination.store');
+    Route::get('/delivery_destination.edit/{id}', 'Delivery_destinationsController@edit')->name('delivery_destination.edit');
+    Route::put('/delivery_destination.update/{id}', 'Delivery_destinationsController@update')->name('delivery_destination.update');
 });
 
 Route::get('regist.index', 'RegistrationController@index')->name('regist.index');

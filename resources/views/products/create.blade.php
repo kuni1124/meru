@@ -15,7 +15,9 @@
     <div class="row">
         <div class="col-sm-6 offset-sm-3">
 
-            {!! Form::open(['route' => 'product.store']) !!}
+            
+            <form action="{{ url('product.store') }}" method="post"  enctype="multipart/form-data">
+            @csrf
                 <div class="form-group">
                     <label>画像選択<input type="file" name="img" accept=".png,.jpg,.jpeg,image/png,image/jpg"></label>
                 </div>
@@ -64,7 +66,7 @@
                     {!! Form::text('price',null, ['class' => 'form-control']) !!}
                 </div>
                 {!! Form::submit('出品する', ['class' => 'btn btn-primary btn-block']) !!}
-            {!! Form::close() !!}
+                </form>
             {!! link_to_route('home.index', '戻る',[],['class' => 'btn btn-primary']) !!}
         </div>
         

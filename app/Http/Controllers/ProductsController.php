@@ -10,19 +10,20 @@ use App\Kategory;
 use App\Prefecture;
 use App\Product_state;
 use App\Delivery;
-
-
+use App\Delivery_destination;
+use App\Buy;
 
 class ProductsController extends Controller
 {
     public function index()
     {   $user = Auth::user();
-        $products = Product::all();
+        $products = Product::where('motion','motion')->get();
+        $delivery_destination = Delivery_destination::find($user)->first();
        
-        
         // $tankas = Tanka::with('gyousha','kategory','hinnmoku')->where('display', true)->where('kategory_id', $kategory_id)->orderBy('hinnmoku_id')->orderBy('id')->get();
         return view('products.index', [
             'products' => $products,
+            'delivery_destination' => $delivery_destination,
             
           ]);
     }
@@ -69,13 +70,14 @@ class ProductsController extends Controller
         $product->product_state_id = $request->product_state_id;
         $product->prefecture_id = $request->prefecture_id;
         $product->delivery_id = $request->delivery_id;
-       
-        // $path = $request->img->store('public/images');
-        // // パスから、最後の「ファイル名.拡張子」の部分だけ取得します 例)sample.jpg
-        // $filename = basename($path);
-        // $product->image = $filename;
+        $product->motion = 'motion';
+        $path = $request->img->store('public/images');
+        
+        // パスから、最後の「ファイル名.拡張子」の部分だけ取得します 例)sample.jpg
+        $filename = basename($path);
+        $product->image = $filename;
         $product->save();
-
+        
          // $request->imgはformのinputのname='img'の値です
         // ->storeメソッドは別途説明記載します
         
@@ -158,5 +160,32 @@ class ProductsController extends Controller
         
         $product->delete();
         return redirect('/product.index')->with('flash_message', 'delete!');
+    }
+   
+
+    public function transaction()
+    {
+        $user = Auth::user();
+        $products = Product::where('motion', 'transaction')->get();
+        $delivery_destination = Delivery_destination::find($user)->first();
+        
+        return view('products.transaction', [
+            'products' => $products,
+            'delivery_destination' => $delivery_destination,
+          
+          ]);
+    }
+   
+    public function cancel($id)
+    {
+        $user = Auth::user();
+        
+        $product = Product::findOrFail($id);
+        $buy = Buy::where('product_id',$id);
+        
+        $product->motion = "motion";
+        $product->save();
+        $buy->delete();
+        return redirect('/transaction.index')->with('flash_message', 'delete!');
     }
 }

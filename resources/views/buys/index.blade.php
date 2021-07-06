@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 @extends('layouts.app')
 
 @section('content')
@@ -46,16 +45,14 @@
       <div class="text">
             <h4>{{$product->text}}</h4>
       </div>
-      <div class="flex">
-          <div class="text-edit">
-             {!! link_to_route('product.edit', 'この商品を編集',$product->id, ['class' => 'btn btn-primary'] ) !!}
-          </div>
-          <div class="text-delete">
-          {!! Form::model($product, ['route' => ['product.delete', $product->id], 'method' => 'delete']) !!}
-             {!! Form::submit('この商品を削除', ['class' => 'btn btn-danger']) !!}
+      
+         
+          <div class="text-buy">
+          {!! Form::model($product, ['route' => ['buys.create', $product->id], 'method' => 'get']) !!}
+             {!! Form::submit('この商品を購入', ['class' => 'btn btn-danger']) !!}
           {!! Form::close() !!}
           </div>
-       </div>
+       
        <div class="return">
        {!! link_to_route('home.index', '戻る',[],['class' => 'btn btn-primary']) !!}
        </div>
@@ -70,8 +67,9 @@
 <style>
 .container-box{
     background-color:white;
-    width:60%;
-   margin-left:15%;
+    width:70%;
+    margin-top:5%;
+    margin-left:12%;
 }
 .title{
     text-align:center;
@@ -104,7 +102,7 @@ margin-top:5%;
 .teblestyle{
     margin-left:0px;
     padding-left:0px;
-    width:70%;
+    width:50%;
     background-color:#fafafa;
     
 }
@@ -112,14 +110,10 @@ margin-top:5%;
     text-align:center;
     margin-top:5%;
 }
-.flex{
-    display:flex;
-    
-    margin-top:10%;
-}
+
 .text-edit{
     height:130%;
-    margin-left:7%;
+    margin-left:20%;
 }
 .text-delete{
     margin-left:20%;
@@ -130,10 +124,24 @@ margin-top:5%;
     margin-left:21%;
 }
 .image img{
-    height:100%;
+    height:400px;
     width:100%;
     margin-right:0px;
     padding-right:0px;
 }
+.text-buy{
+    width:33%;
+    height:10%;
+    
+   
+    
+}
+
+.return{
+    margin-top:10%;
+    width:14%;
+    height:6%;
+}
+
     
 </style>

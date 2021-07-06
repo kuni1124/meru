@@ -49,6 +49,7 @@
       <div class="text">
             <h4>{{$product->text}}</h4>
       </div>
+       @include('user_follow.follow_button')
       
           
          

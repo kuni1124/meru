@@ -19,18 +19,18 @@
                     
                     
                      <div class="login-nav"> 
-                        <ul>      
-                            {{-- ログアウトへのリンク --}}
-                            <li>{!! link_to_route('logout.get', '♡いいね！一覧') !!}</li>
-                            <li>{!! link_to_route('logout.get', 'Logout') !!}</li>
+                        <ul>                     
+                            <li>{!! link_to_route('users.index', '♡いいね！一覧') !!}</li>
                             <li>{!! link_to_route('home.index','マイページ') !!}</li>
                         </ul>
                     </div> 
                 @else
                     {{-- ユーザ登録ページへのリンク --}}
-                    <li class="nav-item">{!! link_to_route('signup.get', '新規会員登録', [], ['class' => 'btn btn-primary']) !!}</li>
+                
+                    <li class="nav-item">{!! link_to_route('signup.get', '新規会員登録', [], ['class' => 'btn btn-danger']) !!}</li>
                     {{-- ログインページへのリンク --}}
                     <li class="nav-item">{!! link_to_route('login', 'ログイン', [], ['class' => 'btn btn-primary']) !!}</li>
+               
                 @endif
             </ul>
         </div>
@@ -48,7 +48,7 @@ header{
 
 .top-nav li{
     margin-top:3%;
-    margin-left:6%;
+    margin-left:4%;
     
 }
 .top-nav ul{
@@ -61,6 +61,7 @@ header{
 .title{
     color:black;
     font-size:150%;
+    
 }
 .navbar-brand{
     color:black;
@@ -71,7 +72,10 @@ header{
     display:flex;
     
 }
-
+.top-login li{
+    font-size:110%;
+    
+}
 .nav-item{
     margin-left:3%;
 }
@@ -83,15 +87,26 @@ header{
    
 }
 .sc-GMQeP{
-    width:200%
+    width:300%
+    
 }
 .login-nav ul{
-    margin-left:9%;
-    width:120%;
+    
+    width:150%;
     justify-content: space-around;
     
 }
 .login-nav a{
     color:black;
+}
+
+
+.btn{
+    width:100%;
+    height:80%;
+    font-size:80%;
+    padding-bottom:10%;
+    margin-left:100%;
+    
 }
 </style>

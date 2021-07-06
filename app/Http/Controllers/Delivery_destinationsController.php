@@ -26,14 +26,14 @@ class Delivery_destinationsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create(Request $request)
     {
         $delivery_destination = new Delivery_destination;
-        
+        $url = $request->url;
         
         return view('delivery_destination.create', [
             'delivery_destination' => $delivery_destination,
-           
+            'url' => $url,
           ]);
     }
 
@@ -44,12 +44,30 @@ class Delivery_destinationsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   $user = Auth::user();
+        $delivery_destination = new Delivery_destination;
+        $test = $request->url;
+
+        $delivery_destination->user_id = $user->id;
+        $delivery_destination->first_name = $request->first_name;
+        $delivery_destination->last_name = $request->last_name;
+        $delivery_destination->first_name_kana = $request->first_name_kana;
+        $delivery_destination->last_name_kana = $request->last_name_kana;
+        $delivery_destination->postal_code = $request->postal_code;
         
-        return redirect('/home.index')->with('flash_message', 'STORE!');
+        $delivery_destination->prefectures = $request->prefectures;
+        $delivery_destination->municipality = $request->municipality;
+        $delivery_destination->block = $request->block;
+        $delivery_destination->building_name = $request->building_name;
+        $delivery_destination->tel = $request->tel;
+
+        $delivery_destination->save();
+        return redirect($test)->with('flash_message', 'store!');
+        
     }
 
-    /**
+    /** $table->bigIncrements('id');
+           
      * Display the specified resource.
      *
      * @param  int  $id
@@ -71,9 +89,14 @@ class Delivery_destinationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit( Request $request,$id )
     {
-        
+        $delivery_destination = Delivery_destination::findOrFail($id);
+        $url = $request->url;
+        return view('delivery_destination.edit', [
+            'delivery_destination' => $delivery_destination,
+            'url' => $url,
+          ]);
     }
 
     /**
@@ -84,10 +107,27 @@ class Delivery_destinationsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-       
+    {   
+        $user = Auth::user();
+        $delivery_destination = Delivery_destination::findOrFail($id);
+        $test = $request->url;
 
-        return redirect('/product.index')->with('flash_message', 'update!');
+        $delivery_destination->user_id = $user->id;
+        $delivery_destination->first_name = $request->first_name;
+        $delivery_destination->last_name = $request->last_name;
+        $delivery_destination->first_name_kana = $request->first_name_kana;
+        $delivery_destination->last_name_kana = $request->last_name_kana;
+        $delivery_destination->postal_code = $request->postal_code;
+        
+        $delivery_destination->prefectures = $request->prefectures;
+        $delivery_destination->municipality = $request->municipality;
+        $delivery_destination->block = $request->block;
+        $delivery_destination->building_name = $request->building_name;
+        $delivery_destination->tel = $request->tel;
+        $delivery_destination->save();
+
+
+        return redirect($test)->with('flash_message', 'update!');
     }
 
     /**

@@ -15,29 +15,17 @@
         <h5>お届け先登録</h5>
     </div>
     <div class="row">
-        <div class="col-sm-6 offset-sm-3">
-        $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('first_name_kana');
-            $table->string('last_name_kana');
-            $table->string('postal_code');
-            $table->string('prefectures');
-            $table->string('municipality');
-            $table->string('block');
-            $table->string('building_name');
-            $table->string('tel');
-            $table->timestamps();
-            {!! Form::open(['route' => 'product.store']) !!}
-                <div class="form-group">
-                    <label>画像選択<input type="file" name="img" accept=".png,.jpg,.jpeg,image/png,image/jpg"></label>
-                </div>
+        <div class="rows">
+       
+            {!! Form::open(['route' => 'delivery_destination.store']) !!}
+            {!! Form::hidden('url', $url) !!}
+                
                 <div class="form-group">
                     {!! Form::label('first_name', 'お名前') !!}
                     {!! Form::text('first_name', null, ['class' => 'form-control']) !!}
                 </div>
-                <div class="form-group">                
+                <div class="form-group">  
+                                  
                     {!! Form::text('last_name', null, ['class' => 'form-control']) !!}
                 </div>
                 <div class="form-group">
@@ -45,8 +33,8 @@
                     {!! Form::text('first_name_kana', null, ['class' => 'form-control']) !!}
                 </div>
                 <div class="form-group">
-                   
-                    {!! Form::select('last_name_kana',null, ['class' => 'form-control-kategory','placeholder' => 'Please Select']) !!}
+                      
+                    {!! Form::text('last_name_kana',null, ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group">
@@ -56,28 +44,28 @@
 
                 <div class="form-group">
                     {!! Form::label('prefectures', '都道府県') !!}</br>
-                    {!! Form::select('prefectures',$product_states, ['class' => 'form-control-kategory',"placeholder"=>"選択してください"]) !!}
+                    {!! Form::text('prefectures',null, ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group">
                     {!! Form::label('municipality', '市町村区') !!}</br>
-                    {!! Form::select('municipality',null, ['class' => 'form-control-kategory',"placeholder"=>"選択してください"]) !!}
+                    {!! Form::text('municipality',null, ['class' => 'form-control']) !!}
                 </div>
                 
                 <div class="form-group">
                     {!! Form::label('block', '番地') !!}</br>
-                    {!! Form::select('block',null, ['class' => 'form-control-kategory',"placeholder"=>"選択してください"]) !!}
+                    {!! Form::text('block',null, ['class' => 'form-control']) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('building_name', '建物名') !!}</br>
-                    {!! Form::select('building_name',null, ['class' => 'form-control-kategory',"placeholder"=>"選択してください"]) !!}
+                    {!! Form::text('building_name',null, ['class' => 'form-control']) !!}
                 </div>
             
                 <div class="form-group">
                     {!! Form::label('tel', '電話番号') !!}</br>
                     {!! Form::text('tel',null, ['class' => 'form-control']) !!}
                 </div>
-                {!! Form::submit('登録する', ['class' => 'btn btn-primary btn-block']) !!}
+                {!! Form::submit('登録する', ['class' => 'btn btn-primary']) !!}
             {!! Form::close() !!}
             {!! link_to_route('home.index', '戻る',[],['class' => 'btn btn-primary']) !!}
         </div>
@@ -91,24 +79,20 @@
     </body>
 </html>
 <style>
-.form-control-kana{
-    width:100%;
-    height:200px;
-}
-.form-group select{
-    width:100%;
-    height:50px;
+.form-control{
+    width:130%;
     
 }
+
 .row{
     
     padding-top:5%;
     padding-bottom:10%;
     background-color:white;
-    width: 60%;
+    width: 40%;
     margin-left:auto;
     margin-right: auto;
-    
+    justify-content:center;
 }
 .text{
     text-align:center;
@@ -120,6 +104,6 @@ body{
 }    
 .btn{
     margin-top:8%;
-    width:100%;
+    width:130%;
 }   
 </style>

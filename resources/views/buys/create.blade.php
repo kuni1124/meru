@@ -21,7 +21,7 @@
 
             <div class="form-group-image">
                 <div class="image">
-                    <label>画像選択</label>
+                    <img src="{{asset('storage/images/'.$product->image)}}" class="margin">
                 </div>
                 <div class="name">
                     <h4>{{$product->name}}</h4><br/>
@@ -31,27 +31,34 @@
             <div class="totalprice">
                 <h4 class="maney">お支払い金額</h4>
                 <h4 class="total">¥{{$product->price*1.10}}</h4>
-            </div>    
-            <div class="adress">
-                <h4 class="maney">配送先</h4>
-                @if($delivery_destination->id)
-                    {!! link_to_route('delivery_destination.edit', '変更する',$delivery_destination->id,['class' => 'rink']) !!}
-                @else
-                    {!! link_to_route('delivery_destination.create', '変更する',$delivery_destination->id,['class' => 'rink']) !!}
-                @endif    
-                <h4 class="total">¥{{$product->price*1.10}}</h4>
-            </div>    
-        
-               
-
-                
-
-                {!! Form::submit('商品を購入する', ['class' => 'btn btn-primary']) !!}
+            </div> 
+            <div class="btn-box">
+            {!! Form::submit('商品を購入する', ['class' => 'btn btn-primary']) !!}
 
             {!! Form::close() !!}
             {!! link_to_route('home.index', '戻る',[],['class' => 'btn btn-primary']) !!}
-        </div>
-    </div>
+            </div>  
+            
+            
+            <div class="adress">
+                <h5>配送先</h5>
+                @if($delivery_destination) 
+                    {!! link_to_route('delivery_destination.edit', '変更する',[$delivery_destination->id, 'url' => '/buys.create/'.$product->id],['class' => 'rink']) !!}<br/>
+                @else
+                    {!! link_to_route('delivery_destination.create', '追加する',['url' => '/buys.create/'.$product->id],['class' => 'rink']) !!}
+                @endif   
+                @if($delivery_destination) 
+                    {{$delivery_destination->first_name}}{{$delivery_destination->last_name}}<br/>
+                    {{$delivery_destination->prefectures}}{{$delivery_destination->municipality}}
+                @endif  
+            </div>    
+        
+            </div>        
+
+                
+
+             
+    
     
 
    
@@ -120,5 +127,18 @@ body{
 }
 .btn{
     margin-left:50%;
+    
+}
+
+.image{
+    width:40%;
+}
+.image img{
+    width:100%;
+    height:400px;
+}
+.adress{
+    margin-top:10%;
+    
 }
 </style>

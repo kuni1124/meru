@@ -27,6 +27,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('prefecture_id');
             $table->unsignedBigInteger('delivery_id');
             $table->timestamps();
+            $table->string('motion')->nullable();
             
         });
     }

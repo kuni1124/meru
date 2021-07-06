@@ -30,4 +30,9 @@ class Product extends Model
     {
         return $this->belongsTo(Product_state::class);
     }
+    public function buymotions()
+    {
+        return $this->hasMany(Buy::class);
+    }
+   
 }

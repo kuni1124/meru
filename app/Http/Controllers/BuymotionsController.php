@@ -10,21 +10,21 @@ use App\Kategory;
 use App\Prefecture;
 use App\Product_state;
 use App\Delivery;
-use App\Buy;
 use App\Delivery_destination;
+use App\Buy;
 
 
-class BuysController extends Controller
+class BuymotionsController extends Controller
 {
-    public function index($id)
-    {  
-        $user = Auth::user();
-        $product = Product::findOrFail($id);
-       
+    public function index()
+    {   $user = Auth::user();
+        $buys = Buy::where('display', true)->get();
+        $delivery_destination = Delivery_destination::find($user)->first();
         
-        return view('buys.index', [
-            'product' => $product,
-            
+        // $tankas = Tanka::with('gyousha','kategory','hinnmoku')->where('display', true)->where('kategory_id', $kategory_id)->orderBy('hinnmoku_id')->orderBy('id')->get();
+        return view('buymotions.index', [
+            'buys' => $buys,
+            'delivery_destination' => $delivery_destination,
             
           ]);
     }
@@ -34,18 +34,9 @@ class BuysController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
-
-    {   $user = Auth::user();
-        $buy = new Buy;
-        $product = Product::findOrFail($id);
-        $delivery_destination = Delivery_destination::find($user)->first();
-        
-        return view('buys.create', [
-            'product' => $product,
-            'buy' => $buy,
-            'delivery_destination' => $delivery_destination,
-          ]);
+    public function create()
+    {
+      
     }
 
     /**
@@ -54,20 +45,12 @@ class BuysController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id)
+    public function store(Request $request)
     {
-        $user = Auth::user();
-        $product = Product::findOrFail($id);
-        $date = now();
-        $buy = new Buy;
-        $buy->date = $date;
-        $buy->user_id = $user->id;
-        $buy->product_id = $product->id;
-        $buy->display = true;
-        $product->motion = "transaction";
-        $buy->save();
-        $product->save();
        
+         // $request->imgはformのinputのname='img'の値です
+        // ->storeメソッドは別途説明記載します
+        
         return redirect('/home.index')->with('flash_message', 'STORE!');
     }
 
@@ -79,9 +62,9 @@ class BuysController extends Controller
      */
     public function show($id)
     {
-        $product = Product::findOrFail($id);
-        
-        return view('buys.show', [
+       
+
+        return view('products.show', [
             'product' => $product,
 
           ]);
@@ -95,7 +78,7 @@ class BuysController extends Controller
      */
     public function edit($id)
     {
-        
+      
     }
 
     /**
@@ -107,9 +90,7 @@ class BuysController extends Controller
      */
     public function update(Request $request, $id)
     {
-       
-
-        return redirect('/product.index')->with('flash_message', 'update!');
+        
     }
 
     /**
@@ -119,8 +100,13 @@ class BuysController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-       
-        return redirect('/product.index')->with('flash_message', 'delete!');
+    {   
+        $buys = Buy::findOrFail($id);
+        $buy = $buys->product_id;
+        $product = Product::findOrFail($buy);
+        $product->motion = "motion";
+        $product->save();
+        $buys -> delete();
+        return redirect('/buymotions.index')->with('flash_message', 'delete!');
     }
 }

@@ -1,11 +1,10 @@
-<!DOCTYPE html>
 @extends('layouts.app')
 
 @section('content')
   
 <div class="mycontainer">
 <div class=mybox>
-        <div class="mylist">
+<div class="mylist">
             <ul>
                 <li>{!! link_to_route('product.create', '出品する',[],['class' => 'rink']) !!}</li>
                 <li>{!! link_to_route('product.index', '出品した商品-出品中',[],['class' => 'rink']) !!}</li>
@@ -33,8 +32,10 @@
             <li class="image"><img src="{{asset('storage/images/'.$product->image)}}" ></li>   
             <li class="whitename">{{$product->name}}</li>
             <li class="whiteprice"><div class="margin">¥{{$product->price}}<div></li> 
-           
-            
+          <div class="delivery">
+            <li> <a href="{{ url('product.show', $product->id) }}" class="hassou">発送する</li>
+            <li> <a href="{{ url('cancel', $product->id) }}">取引停止</li>
+          </div>  
         </ul>
         </a>
      @endforeach
@@ -107,6 +108,7 @@ margin-top:5%;
     padding:0px;
     margin-top:5%;
     width:188px;
+    margin-left:30px;
 }
 .line_up li{
     width:188px;
@@ -128,8 +130,10 @@ margin-top:5%;
 }
 .image img{
     width:100%;
-    height:150%;
-   
+    
 }
-
+.delivery li{
+   padding-top:10%;
+    background-color:white;
+}
 </style>
