@@ -172,6 +172,8 @@ class ProductsController extends Controller
         return view('products.transaction', [
             'products' => $products,
             'delivery_destination' => $delivery_destination,
+            
+            
           
           ]);
     }
@@ -184,8 +186,60 @@ class ProductsController extends Controller
         $buy = Buy::where('product_id',$id);
         
         $product->motion = "motion";
+        $product->send = false;
         $product->save();
         $buy->delete();
         return redirect('/transaction.index')->with('flash_message', 'delete!');
+    }
+
+    public function send($id)
+    {
+        $user = Auth::user();
+        $product = Product::findOrFail($id);
+        $buy = Buy::where('product_id',$id)->first();
+        
+        $product->send = true;
+        $buy->buysend = true;
+       
+        $product->save();
+        $buy->save();
+        
+        return redirect('/transaction.index')->with('flash_message', 'delete!');
+    }
+
+    public function sold()
+    {   $user = Auth::user();
+        $products = Product::where('motion','sold')->get();
+        $delivery_destination = Delivery_destination::find($user)->first();
+       
+        // $tankas = Tanka::with('gyousha','kategory','hinnmoku')->where('display', true)->where('kategory_id', $kategory_id)->orderBy('hinnmoku_id')->orderBy('id')->get();
+        return view('products.sold', [
+            'products' => $products,
+            'delivery_destination' => $delivery_destination,
+            
+          ]);
+    }
+
+    public function sold_save($id)
+    {   
+        $product = Product::findOrFail($id);
+        $buy = Buy::where('product_id',$id)->first();
+        
+        $buy->display = false;
+        $buy->buysend = null;
+        $product->motion= "sold";
+        $product->send = false;
+        $product->save();
+        $buy->save();
+       
+        return redirect('/buymotions.index')->with('flash_message', 'delete!');
+    }
+
+    public function sold_delete($id)
+    {   
+        $product = Product::findOrFail($id);
+        $product->motion= "delete";
+        $product->save();
+        return redirect('/product.sold')->with('flash_message', 'delete!');
     }
 }

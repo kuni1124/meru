@@ -37,12 +37,21 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/product.delete/{id}', 'ProductsController@destroy')->name('product.delete');
     Route::put('/product.update/{id}', 'ProductsController@update')->name('product.update');
     Route::get('transaction.index', 'ProductsController@transaction')->name('transaction.index');
+    Route::get('transaction.send/{id}', 'ProductsController@send')->name('transaction.send');
     Route::get('cancel/{id}', 'ProductsController@cancel')->name('cancel');
-
+    Route::get('product.sold_save/{id}', 'ProductsController@sold_save')->name('product.sold_save');
+    Route::get('product.sold', 'ProductsController@sold')->name('product.sold');
+    Route::get('product.sold_delete/{id}', 'ProductsController@sold_delete')->name('product.sold_delete');
+    
+    
+    
     Route::get('buys.index/{id}', 'BuysController@index')->name('buys.index');
     Route::get('buys.create/{id}', 'BuysController@create')->name('buys.create');
     Route::post('buys.store/{id}', 'BuysController@store')->name('buys.store');
     Route::get('buys.show/{id}', 'BuysController@show')->name('buys.show');
+    Route::get('buys.buy', 'BuysController@buy')->name('buys.buy');
+    Route::get('buys.delete/{id}', 'BuysController@destroy')->name('buys.delete');
+    
     
     Route::get('buymotions.index', 'BuymotionsController@index')->name('buymotions.index');
     Route::get('buymotions.destroy/{id}', 'BuymotionsController@destroy')->name('buymotions.destroy');

@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-
+  
 <div class="mycontainer">
-    <div class=mybox>
-    <div class="mylist">
+<div class=mybox>
+<div class="mylist">
             <ul>
                 <li>{!! link_to_route('product.create', '出品する',[],['class' => 'rink']) !!}</li>
                 <li>{!! link_to_route('product.index', '出品した商品-出品中',[],['class' => 'rink']) !!}</li>
@@ -22,15 +22,39 @@
             </ul>
         </div>
         <div class="mynews">
-         <img src="/images/images.jpeg">
+        <div class="title">
+        <h3>出品した商品-売却済み</h3>
+    </div>
+    <div class="line_up">
+     @foreach($products as $product)
+     
+        <ul>
+            <li class="image"><img src="{{asset('storage/images/'.$product->image)}}" ></li>   
+            <li class="whitename">{{$product->name}}</li>
+            <li class="whiteprice"><div class="margin">¥{{$product->price}}<div></li> 
+          <div class="delivery">
+          <a href="{{ url('product.sold_delete', $product->id) }}">削除する</a>
+          </div>  
+        </ul>
+       
+     @endforeach
+     </div>  
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
+        <div class="return-button">
+        
+        </div>
             
         </div>
     </div>
+    
 </div>
+ @endsection
+   
 
-@endsection
 <style>
-
 .mycontainer{
     background-color: rgb(239, 239, 239);
     margin:0px;
@@ -64,5 +88,51 @@
 }
 .rink{
     color:black;
+}
+.title{
+    text-align:center;
+}
+.title h3{
+font-family: Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+margin-top:5%;
+}
+.line_up{
+    display:flex;
+    justify-content: space-around;
+    
+}
+.line_up ul{
+    list-style:none;
+    box-shadow: 2px 2px 4px gray;
+    padding:0px;
+    margin-top:5%;
+    width:188px;
+    margin-left:30px;
+}
+.line_up li{
+    width:188px;
+    padding:0px;
+    margin:0px;
+}
+.whitename{
+    background-color:white;
+    
+    
+}
+.whiteprice{
+    background-color:white;
+    
+}
+.margin{
+    margin-left:10%;
+    
+}
+.image img{
+    width:100%;
+    
+}
+.delivery li{
+   padding-top:10%;
+    background-color:white;
 }
 </style>

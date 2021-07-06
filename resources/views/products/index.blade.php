@@ -5,14 +5,14 @@
   
 <div class="mycontainer">
 <div class=mybox>
-        <div class="mylist">
+<div class="mylist">
             <ul>
                 <li>{!! link_to_route('product.create', '出品する',[],['class' => 'rink']) !!}</li>
                 <li>{!! link_to_route('product.index', '出品した商品-出品中',[],['class' => 'rink']) !!}</li>
                 <li>{!! link_to_route('transaction.index', '出品した商品-取引中',[],['class' => 'rink']) !!}</li>
-                <li>出品した商品-売却済み</li>
+                <li>{!! link_to_route('product.sold', '出品した商品-売却済み',[],['class' => 'rink']) !!}</li>
                 <li>{!! link_to_route('buymotions.index', '購入した商品-取引中',[],['class' => 'rink']) !!}</li>
-                <li>購入した商品-過去の取引</li>
+                <li>{!! link_to_route('buys.buy', '購入した商品-過去の取引',[],['class' => 'rink']) !!}</li>
                 <li>{!! link_to_route('users.index', 'いいね一覧',[],['class' => 'rink']) !!}</li>
                 @if($delivery_destination)    
                 <li>{!! link_to_route('delivery_destination.edit', 'お届け先を変更する',$delivery_destination->id,['class' => 'rink']) !!}</li>

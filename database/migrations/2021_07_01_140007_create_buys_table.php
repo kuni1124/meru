@@ -20,6 +20,7 @@ class CreateBuysTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
             $table->boolean('display');
+            $table->boolean('buysend')->nullable();
             $table->timestamps();
         });
     }

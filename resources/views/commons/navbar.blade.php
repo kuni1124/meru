@@ -77,7 +77,7 @@ header{
     
 }
 .nav-item{
-    margin-left:3%;
+    margin-left:6%;
 }
 .category{
     margin-left:5%;

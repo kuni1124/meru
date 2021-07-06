@@ -9,9 +9,9 @@
                 <li>{!! link_to_route('product.create', '出品する',[],['class' => 'rink']) !!}</li>
                 <li>{!! link_to_route('product.index', '出品した商品-出品中',[],['class' => 'rink']) !!}</li>
                 <li>{!! link_to_route('transaction.index', '出品した商品-取引中',[],['class' => 'rink']) !!}</li>
-                <li>出品した商品-売却済み</li>
+                <li>{!! link_to_route('product.sold', '出品した商品-売却済み',[],['class' => 'rink']) !!}</li>
                 <li>{!! link_to_route('buymotions.index', '購入した商品-取引中',[],['class' => 'rink']) !!}</li>
-                <li>購入した商品-過去の取引</li>
+                <li>{!! link_to_route('buys.buy', '購入した商品-過去の取引',[],['class' => 'rink']) !!}</li>
                 <li>{!! link_to_route('users.index', 'いいね一覧',[],['class' => 'rink']) !!}</li>
                 @if($delivery_destination)    
                 <li>{!! link_to_route('delivery_destination.edit', 'お届け先を変更する',$delivery_destination->id,['class' => 'rink']) !!}</li>
@@ -23,7 +23,7 @@
         </div>
         <div class="mynews">
         <div class="title">
-        <h3>出品した商品</h3>
+        <h3>出品した商品-取引中</h3>
     </div>
     <div class="line_up">
      @foreach($products as $product)
@@ -33,8 +33,12 @@
             <li class="whitename">{{$product->name}}</li>
             <li class="whiteprice"><div class="margin">¥{{$product->price}}<div></li> 
           <div class="delivery">
-            <li> <a href="{{ url('product.show', $product->id) }}" class="hassou">発送する</li>
+          @if($product->send == true)
             <li> <a href="{{ url('cancel', $product->id) }}">取引停止</li>
+          @else($product->send == null)
+            <li> <a href="{{ url('transaction.send', $product->id)}}" class="hassou">発送する</li>
+            <li> <a href="{{ url('cancel', $product->id) }}">取引停止</li>
+          @endif         
           </div>  
         </ul>
         </a>

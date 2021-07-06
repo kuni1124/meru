@@ -28,6 +28,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('delivery_id');
             $table->timestamps();
             $table->string('motion')->nullable();
+            $table->boolean('send')->nullable();
             
         });
     }

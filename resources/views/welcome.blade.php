@@ -56,11 +56,13 @@
                  @if($product->kategory->name == $mens)
                 <td>
                 <div class="line-up"> 
+                <a href="{{ url('buys.index', $product->id) }}">
                     <ul>
-                     {!! link_to_route('buys.show', $product->id,$product->id,['product' => $product->id]) !!}
+                    <li class="image"><img src="{{asset('storage/images/'.$product->image)}}" class="margin"></li>  
                      <li class="whitename">{{$product->name}}</li>
                      <li class="whiteprice"><div class="margin">¥{{$product->price}}<div></li>    
                     </ul>
+                 </a>
                 </div>
                 </td>
                 @endif
@@ -77,12 +79,14 @@
                 @foreach($products as $product) 
                  @if($product->kategory->name == $toys)
                  <td>
-                 <div class="line-up"> 
+                 <div class="line-up">
+                 <a href="{{ url('buys.index', $product->id) }}"> 
                     <ul>
-                     {!! link_to_route('buys.show', $product->id,$product->id,['product' => $product->id]) !!}
+                    <li class="image"><img src="{{asset('storage/images/'.$product->image)}}" class="margin"></li>  
                      <li class="whitename">{{$product->name}}</li>
                      <li class="whiteprice"><div class="margin">¥{{$product->price}}<div></li>    
                     </ul>
+                </a>
                  </div>
                  </td>
               @endif

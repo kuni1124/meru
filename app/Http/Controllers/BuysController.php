@@ -120,7 +120,22 @@ class BuysController extends Controller
      */
     public function destroy($id)
     {
-       
-        return redirect('/product.index')->with('flash_message', 'delete!');
+        $buy = Buy::findOrFail($id);
+        $buy->delete();
+        return redirect('/buys.buy')->with('flash_message', 'delete!');
     }
+
+    public function buy()
+    {  
+        $user = Auth::user();
+        $buys = Buy::where('display',false)->get();
+        $delivery_destination = Delivery_destination::find($user)->first();
+        
+        return view('buys.buy', [
+            'buys' => $buys,
+            'delivery_destination' => $delivery_destination,
+            
+          ]);
+    }
+
 }

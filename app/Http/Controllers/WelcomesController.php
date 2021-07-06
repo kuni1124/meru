@@ -17,7 +17,7 @@ class WelcomesController extends Controller
 {
     public function index()
     {   
-        $products = Product::orderBy('kategory_id','desc')->get();
+        $products = Product::orderBy('kategory_id','desc')->where('motion','motion')->get();
         $womens   = "レディース";
         $mens   = "メンズ";
         $toys   = "おもちゃ";
