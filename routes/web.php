@@ -88,3 +88,5 @@ Route::get('product_states.index', 'Product_statesController@index')->name('prod
 Route::get('product_states.create', 'Product_statesController@create')->name('product_states.create');
 Route::post('product_states.store', 'Product_statesController@store')->name('product_states.store');
 Route::delete('product_states.delete/{id}', 'Product_statesController@destroy')->name('product_states.delete');
+
+Route::get('Search','SearchController@index')->name('search');

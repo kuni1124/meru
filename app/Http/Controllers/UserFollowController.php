@@ -10,21 +10,25 @@ use App\Kategory;
 use App\Prefecture;
 use App\Product_state;
 use App\Delivery;
+use App\Delivery_destination;
 class UserFollowController extends Controller
 {
 
     public function index()
     {   $user = Auth::user();
-        
-       
+        $delivery_destination = Delivery_destination::find($user)->first();
+        $kategorys = Kategory::all()->pluck('name','id');
         $user->loadRelationshipCounts();
         
         // ユーザのフォロワー一覧を取得
         $followings = $user->followings()->paginate(10);
         
+       
         // $tankas = Tanka::with('gyousha','kategory','hinnmoku')->where('display', true)->where('kategory_id', $kategory_id)->orderBy('hinnmoku_id')->orderBy('id')->get();
         return view('user_follow.index', [
             'followings' => $followings,
+            'delivery_destination' => $delivery_destination,
+            'kategorys' => $kategorys,
             
           ]);
     }

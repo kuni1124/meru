@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Delivery_destination;
+use App\Kategory;
 class HomesController extends Controller
 {
     /**
@@ -17,8 +18,10 @@ class HomesController extends Controller
 
         $user = Auth::user();
         $delivery_destination = Delivery_destination::find($user)->first();
+        $kategorys = Kategory::all()->pluck('name','id');
         return view('home.index', [
-            'delivery_destination' => $delivery_destination
+            'delivery_destination' => $delivery_destination,
+            'kategorys' => $kategorys,
          ]);
     }
 

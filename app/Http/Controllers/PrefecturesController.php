@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Prefecture;
+use App\Kategory;
 class PrefecturesController extends Controller
 {
     public function index()

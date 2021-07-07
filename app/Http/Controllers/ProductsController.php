@@ -19,11 +19,12 @@ class ProductsController extends Controller
     {   $user = Auth::user();
         $products = Product::where('motion','motion')->get();
         $delivery_destination = Delivery_destination::find($user)->first();
-       
+        $kategorys = Kategory::all()->pluck('name','id');
         // $tankas = Tanka::with('gyousha','kategory','hinnmoku')->where('display', true)->where('kategory_id', $kategory_id)->orderBy('hinnmoku_id')->orderBy('id')->get();
         return view('products.index', [
             'products' => $products,
             'delivery_destination' => $delivery_destination,
+            'kategorys' => $kategorys,
             
           ]);
     }
@@ -168,10 +169,11 @@ class ProductsController extends Controller
         $user = Auth::user();
         $products = Product::where('motion', 'transaction')->get();
         $delivery_destination = Delivery_destination::find($user)->first();
-        
+        $kategorys = Kategory::all()->pluck('name','id');
         return view('products.transaction', [
             'products' => $products,
             'delivery_destination' => $delivery_destination,
+            'kategorys' => $kategorys,
             
             
           
@@ -211,11 +213,12 @@ class ProductsController extends Controller
     {   $user = Auth::user();
         $products = Product::where('motion','sold')->get();
         $delivery_destination = Delivery_destination::find($user)->first();
-       
+        $kategorys = Kategory::all()->pluck('name','id');
         // $tankas = Tanka::with('gyousha','kategory','hinnmoku')->where('display', true)->where('kategory_id', $kategory_id)->orderBy('hinnmoku_id')->orderBy('id')->get();
         return view('products.sold', [
             'products' => $products,
             'delivery_destination' => $delivery_destination,
+            'kategorys' => $kategorys,
             
           ]);
     }

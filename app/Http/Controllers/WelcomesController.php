@@ -17,10 +17,14 @@ class WelcomesController extends Controller
 {
     public function index()
     {   
+        
         $products = Product::orderBy('kategory_id','desc')->where('motion','motion')->get();
+        $brand = Product::where('motion','motion')->pluck('brand','id');
+        $kategorys = Kategory::all()->pluck('name','id');
         $womens   = "レディース";
         $mens   = "メンズ";
         $toys   = "おもちゃ";
+        
         
         // $tankas = Tanka::with('gyousha','kategory','hinnmoku')->where('display', true)->where('kategory_id', $kategory_id)->orderBy('hinnmoku_id')->orderBy('id')->get();
         return view('welcome', [
@@ -28,6 +32,8 @@ class WelcomesController extends Controller
             'womens' => $womens,
             'mens' => $mens,
             'toys' => $toys,
+            'kategorys' => $kategorys,
+            'brand' => $brand,
             
           ]);
     }

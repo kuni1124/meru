@@ -115,4 +115,5 @@ class User extends Authenticatable
     {
         $this->loadCount(['followings', 'followers']);
     }
+    
 }

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product_state;
+use App\Kategory;
 class Product_statesController extends Controller
 {
     public function index()

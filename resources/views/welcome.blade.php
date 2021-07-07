@@ -2,7 +2,22 @@
 
 @section('content')
   
-        <div class="container">
+ 
+             {!! Form::open(['route' => 'search', 'method' => 'get']) !!}
+                <div class="search_flex">
+                   <div class="form-group1">
+                    {!! Form::label('strength', 'カテゴリから探す') !!}
+                    {!! Form::select('kategory_name',$kategorys, ['class' => 'form-control', 'placeholder' => 'カテゴリから探す']) !!}
+                   </div>
+                   <div class="select">
+                  {!! Form::submit('検索', ['class' => 'btn1 btn-primary btn-block']) !!}
+                   </div>
+                </div>
+              {!! Form::close() !!}
+          
+                 
+               
+               
           <div class="box">
             <div class="title">
                 <h1>人気のカテゴリー</h1> 
@@ -102,7 +117,7 @@
     
     background-color:white;
     margin-left:0px;
-    margin-top:18%;
+   
     
 }
 
@@ -189,5 +204,27 @@
     width:100%;
     margin-left:0px;
     height:120px;
+}
+.check_box{
+    display:flex;
+}
+
+.btn1{
+    margin-left:10%;
+    
+   
+    
+}
+.select{
+    width:5%;
+    height:5%;
+    width:10%;
+}
+.search_flex{
+    display: flex;
+}
+.form-group1 select{ 
+    width:150px;
+    height:30px;
 }
 </style>

@@ -40,11 +40,12 @@ class BuysController extends Controller
         $buy = new Buy;
         $product = Product::findOrFail($id);
         $delivery_destination = Delivery_destination::find($user)->first();
-        
+        $kategorys = Kategory::all()->pluck('name','id');
         return view('buys.create', [
             'product' => $product,
             'buy' => $buy,
             'delivery_destination' => $delivery_destination,
+            'kategorys' => $kategorys,
           ]);
     }
 
@@ -130,10 +131,11 @@ class BuysController extends Controller
         $user = Auth::user();
         $buys = Buy::where('display',false)->get();
         $delivery_destination = Delivery_destination::find($user)->first();
-        
+        $kategorys = Kategory::all()->pluck('name','id');
         return view('buys.buy', [
             'buys' => $buys,
             'delivery_destination' => $delivery_destination,
+            'kategorys' => $kategorys,
             
           ]);
     }

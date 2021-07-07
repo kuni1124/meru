@@ -20,11 +20,12 @@ class BuymotionsController extends Controller
     {   $user = Auth::user();
         $buys = Buy::where('display', true)->get();
         $delivery_destination = Delivery_destination::find($user)->first();
-        
+        $kategorys = Kategory::all()->pluck('name','id');
         // $tankas = Tanka::with('gyousha','kategory','hinnmoku')->where('display', true)->where('kategory_id', $kategory_id)->orderBy('hinnmoku_id')->orderBy('id')->get();
         return view('buymotions.index', [
             'buys' => $buys,
             'delivery_destination' => $delivery_destination,
+            'kategorys' => $kategorys,
             
           ]);
     }

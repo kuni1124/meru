@@ -13,12 +13,13 @@
 
     <style>
     .btnunfollow{
-        max-width:10%;
-        margin-left:20%;
+        max-width:30%;
+        margin-left:0px;
        
     }
     .btnfollow{
-        max-width:20%;
-        margin-left:20%;
+        max-width:30%;
+        margin:0px;
+        padding:0px;
     }
     </style>

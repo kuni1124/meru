@@ -3,6 +3,17 @@
 @section('content')
   
 <div class="mycontainer">
+              {!! Form::open(['route' => 'search', 'method' => 'get']) !!} 
+                <div class="search_flex">
+                   <div class="form-group1">
+                    {!! Form::label('strength', 'カテゴリから探す') !!}
+                    {!! Form::select('kategory_name',$kategorys, ['class' => 'form-control', 'placeholder' => 'カテゴリから探す']) !!}
+                   </div>
+                   <div class="select">
+                  {!! Form::submit('検索', ['class' => 'btn1 btn-primary btn-block']) !!}
+                   </div>
+                </div>
+              {!! Form::close() !!}
 <div class=mybox>
 <div class="mylist">
             <ul>
@@ -23,7 +34,7 @@
         </div>
         <div class="mynews">
         <div class="title">
-        <h3>出品した商品-売却済み</h3>
+        <h3>購入した商品-過去の取引</h3>
     </div>
     <div class="line_up">
      @foreach($buys as $buy)
@@ -134,5 +145,24 @@ margin-top:5%;
 .delivery li{
    padding-top:10%;
     background-color:white;
+}
+
+.btn1{
+    margin-left:10%;
+    
+   
+    
+}
+.select{
+    width:5%;
+    height:5%;
+    width:10%;
+}
+.search_flex{
+    display: flex;
+}
+.form-group1 select{ 
+    width:150px;
+    height:30px;
 }
 </style>
