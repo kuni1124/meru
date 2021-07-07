@@ -15,6 +15,7 @@
                    </div>
                 </div>
               {!! Form::close() !!}
+    
 <div class=mybox>
 <div class="mylist">
             <ul>
@@ -139,7 +140,7 @@ margin-top:5%;
 }
 .image img{
     width:100%;
-    height:150%;
+    height:150px;
    
 }
 

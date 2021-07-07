@@ -16,7 +16,9 @@
               {!! Form::close() !!}
           
                  
-               
+    <div class="description">
+      <h4>今回ポートフォリオの為、本人の出品物でも買えるような仕様に設計しております。取引中の機能も同じユーザーでお互いの機能ができます。</h4>
+    </div>             
                
           <div class="box">
             <div class="title">
@@ -108,8 +110,10 @@
             @endforeach
             <tr> 
             </table>
-         
+        <div class="regist">  
+         <h3>管理側の登録機能です。</h3>
         {!! link_to_route('regist.index', '登録') !!}
+        </div>  
  @endsection
 <style>
 
@@ -226,5 +230,8 @@
 .form-group1 select{ 
     width:150px;
     height:30px;
+}
+.regist{
+    margin-top:10%;
 }
 </style>

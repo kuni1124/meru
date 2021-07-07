@@ -54,6 +54,7 @@ header{
     background-color:white;
     padding-left:13%;
     
+    
 }
 .top-nav{
     display:flex;
