@@ -16,11 +16,13 @@ class CreateBuysTable extends Migration
         Schema::create('buys', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('date');
+            $table->date('coment_date')->nullable();
             $table->text('text')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
             $table->boolean('display');
             $table->boolean('buysend')->nullable();
+            $table->unsignedBigInteger('coment_id')->nullable();
             $table->timestamps();
         });
     }

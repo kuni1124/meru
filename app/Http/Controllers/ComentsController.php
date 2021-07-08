@@ -1,37 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Delivery_destination;
-use App\Kategory;
-use App\Buy;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Coment;
-use App\Product;
-class HomesController extends Controller
+class ComentsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
-    {
+    {    $coments = Coment::all();
 
-        $user = Auth::user();
-        $products = Product::orderBy('id','desc')->where('motion', 'transaction')->get();
-        $buys = Buy::orderBy('id','desc')->where('buysend',true)->get();
-        $solds = Product::orderBy('id','desc')->where('motion', 'sold')->get();
-       
-        $delivery_destination = Delivery_destination::find($user)->first();
-        $kategorys = Kategory::all()->pluck('name','id');
-        return view('home.index', [
-            'delivery_destination' => $delivery_destination,
-            'kategorys' => $kategorys,
-            'products' => $products,
-            'buys' => $buys,
-            'solds' => $solds,
+
+        return view('coments.index', [
+           'coments' => $coments
          ]);
     }
 
@@ -42,7 +23,12 @@ class HomesController extends Controller
      */
     public function create()
     {
-        //
+        $coment = new Coment;
+
+
+        return view('coments.create', [
+           'coment' => $coment
+         ]);
     }
 
     /**
@@ -53,7 +39,11 @@ class HomesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $coment = new Coment;
+        $coment->date = now();
+        $coment->coment = $request->coment;
+        $coment->save();
+        return redirect('/coments.index')->with('flash_message', 'STORE!');
     }
 
     /**
@@ -98,6 +88,9 @@ class HomesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $coment = Coment::findOrFail($id);
+        
+        $coment->delete();
+        return redirect('/coments.index')->with('flash_message', 'delete!');
     }
 }

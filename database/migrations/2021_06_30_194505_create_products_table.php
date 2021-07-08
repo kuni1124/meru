@@ -26,6 +26,8 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('product_state_id');
             $table->unsignedBigInteger('prefecture_id');
             $table->unsignedBigInteger('delivery_id');
+            $table->unsignedBigInteger('coment_id')->nullable();
+            $table->date('coment_date')->nullable();
             $table->timestamps();
             $table->string('motion')->nullable();
             $table->boolean('send')->nullable();

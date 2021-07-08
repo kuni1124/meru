@@ -11,6 +11,7 @@ use App\Prefecture;
 use App\Product_state;
 use App\Delivery;
 use App\Buy;
+use App\Coment;
 use App\Delivery_destination;
 
 
@@ -59,13 +60,22 @@ class BuysController extends Controller
     {
         $user = Auth::user();
         $product = Product::findOrFail($id);
+
+        $coment = Coment::find(['id','1'])->first();
         $date = now();
         $buy = new Buy;
+
+        $product->coment_id = $coment->id;
+        $product->coment_date = $date;
+        $product->motion = "transaction";
+        $coment->date = $date;
         $buy->date = $date;
         $buy->user_id = $user->id;
         $buy->product_id = $product->id;
+        
         $buy->display = true;
-        $product->motion = "transaction";
+        
+        $coment->save();
         $buy->save();
         $product->save();
        

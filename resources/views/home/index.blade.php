@@ -33,8 +33,37 @@
             </ul>
         </div>
         <div class="mynews">
-         <img src="/images/images.jpeg">
-            
+         <div>
+           <h4>取引コメント</h4>
+         </div>
+         <div class="delivery">
+            <ul>
+                 @if($solds)
+                       @foreach ($solds as $sold)
+                          <li>{{$sold->coment->coment}}<br/>
+                              商品名：{{$sold->name}}<br/>
+                              日時：{{$sold->coment->date}}</li>
+                          
+                       @endforeach
+                 @endif
+        
+         
+                @if($products)
+                       @foreach ($products as $product)
+                       <li>{{$product->coment->coment}}<br/>
+                      商品名：{{$product->name}}<br/>
+                      日時：{{$product->coment->date}}</li>
+                       @endforeach
+                 @endif
+                 
+                 @if($buys)
+                       @foreach ($buys as $buy)
+                       <li>{{$buy->coment->coment}}<br/>
+                商品名：{{$buy->product->name}}<br/>
+                日時：{{$buy->coment->date}}</li>
+                       @endforeach  
+                 @endif 
+             </ul>
         </div>
     </div>
 </div>
@@ -94,5 +123,16 @@
 .form-group1 select{ 
     width:150px;
     height:30px;
+}
+.delivery ul{
+    
+    margin-left:0px;
+    padding-left:0px;
+}
+.delivery li{
+    margin-top:5%;
+    margin-left:0px;
+    padding-left:0px;
+    border-bottom:1px solid;
 }
 </style>

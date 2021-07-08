@@ -12,7 +12,7 @@ use App\Product_state;
 use App\Delivery;
 use App\Delivery_destination;
 use App\Buy;
-
+use App\Coment;
 class ProductsController extends Controller
 {
     public function index()
@@ -143,7 +143,7 @@ class ProductsController extends Controller
         $product->product_state_id = $request->product_state_id;
         $product->prefecture_id = $request->prefecture_id;
         $product->delivery_id = $request->delivery_id;
-
+        
         $product->save();
 
         return redirect('/product.index')->with('flash_message', 'update!');
@@ -187,6 +187,7 @@ class ProductsController extends Controller
         $product = Product::findOrFail($id);
         $buy = Buy::where('product_id',$id);
         
+        $product->coment_id = null;
         $product->motion = "motion";
         $product->send = false;
         $product->save();
@@ -199,10 +200,13 @@ class ProductsController extends Controller
         $user = Auth::user();
         $product = Product::findOrFail($id);
         $buy = Buy::where('product_id',$id)->first();
-        
+        $coment = Coment::find(['id','2'])->first();
+        $date = now();
+       
         $product->send = true;
         $buy->buysend = true;
-       
+        $buy->coment_id = $coment->id;
+        $buy->coment_date = $date;
         $product->save();
         $buy->save();
         
@@ -227,15 +231,19 @@ class ProductsController extends Controller
     {   
         $product = Product::findOrFail($id);
         $buy = Buy::where('product_id',$id)->first();
+        $coment = Coment::find(['id','3'])->first();
         
+        $date = now();
         $buy->display = false;
         $buy->buysend = null;
         $product->motion= "sold";
         $product->send = false;
+        $product->coment_id = $coment->id;
+        $product->coment_date = $date;
         $product->save();
         $buy->save();
        
-        return redirect('/buymotions.index')->with('flash_message', 'delete!');
+        return redirect('/buymotions.index')->with('flash_message', 'update!');
     }
 
     public function sold_delete($id)

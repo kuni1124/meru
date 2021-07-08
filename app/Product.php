@@ -14,6 +14,11 @@ class Product extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function coment()
+    {
+        return $this->belongsTo(Coment::class);
+    }
     public function delivery()
     {
         return $this->belongsTo(Delivery::class);

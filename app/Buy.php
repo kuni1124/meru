@@ -14,6 +14,10 @@ class Buy extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function coment()
+    {
+        return $this->belongsTo(Coment::class);
+    }
     public function product()
     {
         return $this->belongsTo(Product::class);

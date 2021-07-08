@@ -89,4 +89,11 @@ Route::get('product_states.create', 'Product_statesController@create')->name('pr
 Route::post('product_states.store', 'Product_statesController@store')->name('product_states.store');
 Route::delete('product_states.delete/{id}', 'Product_statesController@destroy')->name('product_states.delete');
 
+//コメント
+Route::get('coments.index', 'ComentsController@index')->name('coments.index');
+Route::get('coments.create', 'ComentsController@create')->name('coments.create');
+Route::post('coments.store', 'ComentsController@store')->name('coments.store');
+Route::delete('coments.delete/{id}', 'ComentsController@destroy')->name('coments.delete');
+
+
 Route::get('Search','SearchController@index')->name('search');
