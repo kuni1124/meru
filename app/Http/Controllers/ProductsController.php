@@ -65,15 +65,24 @@ class ProductsController extends Controller
         $product->kananame = $request->kananame;
         $product->text = $request->text;
         $product->brand = $request->brand;
+        
+        if(is_numeric($request->price) != true){
+            return redirect('/product.create');
+        }
         $product->price = $request->price;
         $product->user_id = $user->id;
         $product->kategory_id = $request->kategory_id;
         $product->product_state_id = $request->product_state_id;
         $product->prefecture_id = $request->prefecture_id;
         $product->delivery_id = $request->delivery_id;
+        $test = $request->img;
+       
+        if($request->name == null or $request->kananame == null or $request->text == null or $request->price == null or $request->kategory_id == null or $request->product_state_id == null or $request->prefecture_id == null or $request->delivery_id == null or $test == null){
+            return redirect('/product.create');
+           
+        }
         $product->motion = 'motion';
-        $path = $request->img->store('public/images');
-        
+        $path = $test->store('public/images');
         // パスから、最後の「ファイル名.拡張子」の部分だけ取得します 例)sample.jpg
         $filename = basename($path);
         $product->image = $filename;

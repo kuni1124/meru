@@ -19,7 +19,7 @@
        
             {!! Form::open(['route' => 'delivery_destination.store']) !!}
             {!! Form::hidden('url', $url) !!}
-                
+             
                 <div class="form-group">
                     {!! Form::label('first_name', 'お名前') !!}
                     {!! Form::text('first_name', null, ['class' => 'form-control']) !!}

@@ -9,7 +9,7 @@
 
     <body>
     <div class="text-center">
-        <h1>都道府県</h1>
+        <h1>発送日時登録</h1>
     </div>
 
     <div class="row">
@@ -21,7 +21,7 @@
                     {!! Form::text('text', null, ['class' => 'form-control']) !!}
                 </div>
 
-                {!! Form::submit('Sign up', ['class' => 'btn btn-primary btn-block']) !!}
+                {!! Form::submit('登録', ['class' => 'btn btn-primary btn-block']) !!}
             {!! Form::close() !!}
         </div>
     </div>

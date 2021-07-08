@@ -47,7 +47,10 @@ class Delivery_destinationsController extends Controller
     {   $user = Auth::user();
         $delivery_destination = new Delivery_destination;
         $test = $request->url;
-
+        
+        if($request->first_name == null or $request->last_name == null or $request->first_name_kana == null or $request->last_name_kana == null or $request->postal_code == null or $request->prefectures == null or $request->municipality == null or $request->block == null or $request->building_name == null or $request->tel == null){
+            return redirect($test);
+        }
         $delivery_destination->user_id = $user->id;
         $delivery_destination->first_name = $request->first_name;
         $delivery_destination->last_name = $request->last_name;
@@ -111,7 +114,10 @@ class Delivery_destinationsController extends Controller
         $user = Auth::user();
         $delivery_destination = Delivery_destination::findOrFail($id);
         $test = $request->url;
-
+       
+        if($request->first_name == null or $request->last_name == null or $request->first_name_kana == null or $request->last_name_kana == null or $request->postal_code == null or $request->prefectures == null or $request->municipality == null or $request->block == null or $request->building_name == null or $request->tel == null){
+            return redirect($test);
+        }
         $delivery_destination->user_id = $user->id;
         $delivery_destination->first_name = $request->first_name;
         $delivery_destination->last_name = $request->last_name;

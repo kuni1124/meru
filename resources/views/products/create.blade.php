@@ -10,8 +10,8 @@
     <body>
     <div class="text">
         <h5>umekikunihiko</h5>
+        <h5>入力項目に未選択の項目があるとこの画面に戻ります</h5>
     </div>
-
     <div class="row">
         <div class="col-sm-6 offset-sm-3">
 
@@ -63,6 +63,7 @@
 
                 <div class="form-group">
                     {!! Form::label('price', '値段') !!}</br>
+                    <p>半角で入力してください</p>
                     {!! Form::text('price',null, ['class' => 'form-control']) !!}
                 </div>
                 {!! Form::submit('出品する', ['class' => 'btn btn-primary btn-block']) !!}

@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('image')->nullable();
             $table->string('brand')->nullable();
             $table->text('text')->nullable();
-            $table->integer('price');
+            $table->float('price');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('kategory_id');
             $table->unsignedBigInteger('product_state_id');
